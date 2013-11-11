@@ -11,16 +11,36 @@
         <div id="content">
             <h1>Do it!</h1>
 
-            <p data-bind="visible: state() == 'connecting'">Connecting to Remember The Milk <i class="fa fa-spinner fa-spin"></i></p>
+            <!-- Display current connection status -->
+            <div>
+                <p data-bind="visible: state() == 'connecting'">
+                    Connecting to Remember The Milk <i class="fa fa-spinner fa-spin"></i>
+                </p>
 
-            <a target="_blank" data-bind="visible: state() == 'connected'">Authorize this application in Remember The Milk</a>
+                <a target="_blank" data-bind="visible: state() == 'connected'">
+                    Authorize this application in Remember The Milk
+                </a>
 
-            <p data-bind="visible: state() == 'authorizing'">Waiting for Remember The Milk authorization to complete <i class="fa fa-spinner fa-spin"></i></p>
-            <div data-bind="visible: state() == 'authorized'">
+                <p data-bind="visible: state() == 'authorizing'">
+                    Waiting for Remember The Milk authorization to complete <i class="fa fa-spinner fa-spin"></i>
+                </p>
+            </div>
+
+            <!-- Display lists of tasks -->
+            <div id="lists" data-bind="visible: state() == 'ready' || state() == 'loading'">
                 <ul data-bind="foreach: lists()">
-                    <li data-bind="text: name, visible: !(archived || deleted)"></li>
+                    <li data-bind="text: name, visible: !(archived || deleted), click: $parent.selectList($data)">
+                    </li>
                 </ul>
             </div>
+
+            <!-- Display tasks for the selected list -->
+            <div id="tasks" data-bind="visible: state() == 'ready' || state() == 'loading'">
+                <ul data-bind="foreach: taskSeries()">
+                    <li data-bind="text: name, click: $parent.selectTask($data)"></li>
+                </ul>
+            </div>
+
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
