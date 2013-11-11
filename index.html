@@ -10,11 +10,16 @@
     <body>
         <div id="content">
             <h1>Do it!</h1>
+
             <p data-bind="visible: state() == 'connecting'">Connecting to Remember The Milk <i class="fa fa-spinner fa-spin"></i></p>
+
             <a target="_blank" data-bind="visible: state() == 'connected'">Authorize this application in Remember The Milk</a>
+
             <p data-bind="visible: state() == 'authorizing'">Waiting for Remember The Milk authorization to complete <i class="fa fa-spinner fa-spin"></i></p>
             <div data-bind="visible: state() == 'authorized'">
-                <p>Task data to be displayed here</p>
+                <ul data-bind="foreach: listNames()">
+                    <li data-bind="text: $data"></li>
+                </ul>
             </div>
         </div>
 
