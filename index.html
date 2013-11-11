@@ -4,12 +4,18 @@
         <meta charset="utf-8">
         <title>Do it!</title>
         <link rel="stylesheet/less" type="text/css" href="main.less">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
         <script src="lib/less-1.5.0.min.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="content">
             <h1>Do it!</h1>
-            <a target="_blank">Authorize this application in Remember The Milk</a>
+            <p data-bind="visible: state() == 'connecting'">Connecting to Remember The Milk <i class="fa fa-spinner fa-spin"></i></p>
+            <a target="_blank" data-bind="visible: state() == 'connected'">Authorize this application in Remember The Milk</a>
+            <p data-bind="visible: state() == 'authorizing'">Waiting for Remember The Milk authorization to complete <i class="fa fa-spinner fa-spin"></i></p>
+            <div data-bind="visible: state() == 'authorized'">
+                <p>Task data to be displayed here</p>
+            </div>
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
