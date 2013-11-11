@@ -17,8 +17,8 @@
 
             <p data-bind="visible: state() == 'authorizing'">Waiting for Remember The Milk authorization to complete <i class="fa fa-spinner fa-spin"></i></p>
             <div data-bind="visible: state() == 'authorized'">
-                <ul data-bind="foreach: listNames()">
-                    <li data-bind="text: $data"></li>
+                <ul data-bind="foreach: lists()">
+                    <li data-bind="text: name, visible: !(archived || deleted)"></li>
                 </ul>
             </div>
         </div>
