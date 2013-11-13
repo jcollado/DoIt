@@ -74,25 +74,29 @@ h1 {
     margin-bottom: 20px;
 }
 
+.items() {
+    background: #ddd;
+    margin: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    &:hover {
+        color: #eee;
+        background: #555;
+    }
+
+    &.selected {
+        color: #eee;
+        background: #333;
+    }
+}
+
 #lists {
     float: left;
     width: @lists-width;
 
     li {
-        background: #ddd;
-        margin: 5px;
-        padding: 5px 10px;
-        border-radius: 5px;
-
-        &:hover {
-            color: #eee;
-            background: #555;
-        }
-
-        &.selected {
-            color: #eee;
-            background: #333;
-        }
+        .items
     }
 }
 
@@ -101,15 +105,7 @@ h1 {
     width: @tasks-width;
 
     li {
-        background: #ddd;
-        margin: 5px;
-        padding: 5px 10px;
-        border-radius: 5px;
-
-        &:hover {
-            color: #eee;
-            background: #555;
-        }
+        .items
     }
 }
 
