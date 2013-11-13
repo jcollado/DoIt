@@ -104,8 +104,13 @@ h1 {
     float: right;
     width: @tasks-width;
 
-    li {
+    & > ul > li {
         .items
+    }
+
+    ul ul li {
+        display: inline;
+        background: #88f;
     }
 }
 
