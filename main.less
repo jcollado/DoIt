@@ -53,64 +53,64 @@ table {
 @tasks-width: @content-width - @lists-width;
 
 body {
-    margin: 20px;
-    color: #111;
-    background: #55a;
+  margin: 20px;
+  color: #111;
+  background: #55a;
 }
 
 #content {
-    padding: 20px;
-    border-radius: 15px;
-    margin: auto;
-    width: @content-width;
-    overflow: auto;
-    background: #ccc;
+  padding: 20px;
+  border-radius: 15px;
+  margin: auto;
+  width: @content-width;
+  overflow: auto;
+  background: #ccc;
 }
 
 h1 {
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .items() {
-    background: #ddd;
-    margin: 5px;
-    padding: 5px 10px;
-    border-radius: 5px;
+  background: #ddd;
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
 
-    &:hover {
-        color: #eee;
-        background: #555;
-    }
+  &:hover {
+    color: #eee;
+    background: #555;
+  }
 
-    &.selected {
-        color: #eee;
-        background: #333;
-    }
+  &.selected {
+    color: #eee;
+    background: #333;
+  }
 }
 
 #lists {
-    float: left;
-    width: @lists-width;
+  float: left;
+  width: @lists-width;
 
-    li {
-        .items
-    }
+  li {
+    .items
+  }
 }
 
 #tasks {
-    float: right;
-    width: @tasks-width;
+  float: right;
+  width: @tasks-width;
 
-    & > ul > li {
-        .items
-    }
+  & > ul > li {
+    .items
+  }
 
-    ul ul li {
-        display: inline;
-        background: #88f;
-    }
+  ul ul li {
+    display: inline;
+    background: #88f;
+  }
 }
 

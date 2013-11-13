@@ -1,67 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Do it!</title>
-        <link rel="stylesheet/less" type="text/css" href="main.less">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-        <script src="lib/less-1.5.0.min.js" type="text/javascript"></script>
-    </head>
-    <body>
-        <div id="content">
-            <h1>Do it!</h1>
+<head>
+    <meta charset="utf-8">
+    <title>Do it!</title>
+    <link rel="stylesheet/less" type="text/css" href="main.less">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="lib/less-1.5.0.min.js" type="text/javascript"></script>
+</head>
+<body>
+  <div id="content">
+    <h1>Do it!</h1>
 
-            <!-- Display current connection status -->
-            <div>
-                <p data-bind="visible: state() == 'connecting'">
-                    Connecting to Remember The Milk <i class="fa fa-spinner fa-spin"></i>
-                </p>
+    <!-- Display current connection status -->
+    <div>
+      <p data-bind="visible: state() == 'connecting'">
+        Connecting to Remember The Milk <i class="fa fa-spinner fa-spin"></i>
+      </p>
 
-                <a target="_blank" data-bind="visible: state() == 'connected'">
-                    Authorize this application in Remember The Milk
-                </a>
+      <a target="_blank" data-bind="visible: state() == 'connected'">
+        Authorize this application in Remember The Milk
+      </a>
 
-                <p data-bind="visible: state() == 'authorizing'">
-                    Waiting for Remember The Milk authorization to complete <i class="fa fa-spinner fa-spin"></i>
-                </p>
-            </div>
+      <p data-bind="visible: state() == 'authorizing'">
+        Waiting for Remember The Milk authorization to complete <i class="fa fa-spinner fa-spin"></i>
+      </p>
+    </div>
 
-            <!-- Display lists of tasks -->
-            <div id="lists" data-bind="visible: isAuthorized()">
-                <p data-bind="visible: state() == 'loading-lists'">Loading lists <i class="fa fa-spinner fa-spin"></i></p>
-                <ul data-bind="foreach: lists()">
-                    <li data-bind="visible: !(archived || deleted), text: name, css: {selected: selected()}, click: $parent.selectList($data)">
-                    </li>
-                </ul>
-            </div>
+    <!-- Display lists of tasks -->
+    <div id="lists" data-bind="visible: isAuthorized()">
+      <p data-bind="visible: state() == 'loading-lists'">Loading lists <i class="fa fa-spinner fa-spin"></i></p>
+      <ul data-bind="foreach: lists()">
+        <li data-bind="visible: !(archived || deleted), text: name, css: {selected: selected()}, click: $parent.selectList($data)">
+        </li>
+      </ul>
+    </div>
 
-            <!-- Display tasks for the selected list -->
-            <div id="tasks" data-bind="visible: isAuthorized()">
-                <p data-bind="visible: state() == 'loading-tasks'">Loading tasks <i class="fa fa-spinner fa-spin"></i></p>
-                <p data-bind="visible: state() == 'ready'">
-                    <span data-bind="text: taskSeries().length">?</span>
-                    incomplete task<span data-bind="visible: taskSeries().length != 1">s</span>
-                </p>
-                <ul data-bind="foreach: taskSeries()">
-                    <li data-bind="click: $parent.toggleTask($data), css: {selected: selected()}">
-                        <p data-bind="text: name"></p>
-                        <div data-bind="slide: selected()">
-                            <ul data-bind="foreach: tags">
-                                <li data-bind="text: $data"></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+    <!-- Display tasks for the selected list -->
+    <div id="tasks" data-bind="visible: isAuthorized()">
+      <p data-bind="visible: state() == 'loading-tasks'">Loading tasks <i class="fa fa-spinner fa-spin"></i></p>
+      <p data-bind="visible: state() == 'ready'">
+        <span data-bind="text: taskSeries().length">?</span>
+        incomplete task<span data-bind="visible: taskSeries().length != 1">s</span>
+      </p>
+      <ul data-bind="foreach: taskSeries()">
+        <li data-bind="click: $parent.toggleTask($data), css: {selected: selected()}">
+          <p data-bind="text: name"></p>
+          <div data-bind="slide: selected()">
+            <ul data-bind="foreach: tags">
+              <li data-bind="text: $data"></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-
-        </div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script type="text/javascript" src="lib/underscore-min.js"></script>
-        <script type="text/javascript" src="lib/knockout-3.0.0.js"></script>
-        <script type="text/javascript" src="lib/md5.js"></script>
-        <script type="text/javascript" src="lib/application.js"></script>
-    </body>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript" src="lib/underscore-min.js"></script>
+  <script type="text/javascript" src="lib/knockout-3.0.0.js"></script>
+  <script type="text/javascript" src="lib/md5.js"></script>
+  <script type="text/javascript" src="lib/application.js"></script>
+</body>
 </html>
 
