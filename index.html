@@ -27,7 +27,8 @@
             </div>
 
             <!-- Display lists of tasks -->
-            <div id="lists" data-bind="visible: state() == 'ready' || state() == 'loading'">
+            <div id="lists" data-bind="visible: isAuthorized()">
+                <p data-bind="visible: state() == 'loading-lists'">Loading lists <i class="fa fa-spinner fa-spin"></i></p>
                 <ul data-bind="foreach: lists()">
                     <li data-bind="text: name, visible: !(archived || deleted), click: $parent.selectList($data)">
                     </li>
@@ -35,7 +36,12 @@
             </div>
 
             <!-- Display tasks for the selected list -->
-            <div id="tasks" data-bind="visible: state() == 'ready' || state() == 'loading'">
+            <div id="tasks" data-bind="visible: isAuthorized()">
+                <p data-bind="visible: state() == 'loading-tasks'">Loading tasks <i class="fa fa-spinner fa-spin"></i></p>
+                <p data-bind="visible: state() == 'ready'">
+                    <span data-bind="text: taskSeries().length">?</span>
+                    incomplete task<span data-bind="visible: taskSeries().length != 1">s</span>
+                </p>
                 <ul data-bind="foreach: taskSeries()">
                     <li data-bind="text: name, click: $parent.selectTask($data)"></li>
                 </ul>
