@@ -74,6 +74,12 @@ h1 {
   margin-bottom: 20px;
 }
 
+h2 {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 .items() {
   background: #ddd;
   margin: 5px;
@@ -103,6 +109,11 @@ h1 {
 #tasks {
   float: right;
   width: @tasks-width;
+
+  & > p {
+    margin-top: 10px;
+    float: right;
+  }
 
   & > ul > li {
     .items
