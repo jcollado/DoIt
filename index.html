@@ -47,9 +47,12 @@
         <li data-bind="click: $parent.toggleTask($data), css: {selected: selected()}">
           <p data-bind="text: name"></p>
           <div data-bind="slide: selected()">
-            <ul data-bind="foreach: tags">
-              <li data-bind="text: $data"></li>
-            </ul>
+            <div>
+              <p>Tags: <span data-bind="visible: !tags.length">none</span></p>
+              <ul data-bind="foreach: tags">
+                <li data-bind="text: $data"></li>
+              </ul>
+            </div>
           </div>
         </li>
       </ul>
