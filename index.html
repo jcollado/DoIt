@@ -44,14 +44,15 @@
       </p>
       <h2 data-bind="text: selectedList() && selectedList().name"></h2>
       <ul data-bind="foreach: taskSeries()">
-        <li class="task" data-bind="click: $parent.toggleTask($data), css: {selected: selected()}">
+        <li class="task" data-bind="click: $parent.toggleTask($data), css: {selected: selected()}, event: {mouseenter: toggleDisplayTaskActions, mouseleave: toggleDisplayTaskActions}">
           <p>
             <span data-bind="text: name"></span>
-            <span>
+            <span data-bind="visible: displayTaskActions">
               <i class="fa fa-pencil-square-o"></i>
               <i class="fa fa-trash-o"></i>
             </span>
           </p>
+          <!-- Display task details if is selected -->
           <div data-bind="slide: selected()">
             <p>Priority: <span data-bind="text: task.priority">none</span></p>
             <div class="tags">
