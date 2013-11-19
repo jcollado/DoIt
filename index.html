@@ -17,7 +17,7 @@
         Connecting to Remember The Milk <i class="fa fa-spinner fa-spin"></i>
       </p>
 
-      <a target="_blank" data-bind="visible: state() == 'connected', click: authorizing">
+      <a target="_blank" data-bind="visible: state() == 'connected', attr: { href: authUrl }, click: authorizing">
         Authorize this application in Remember The Milk
       </a>
 
