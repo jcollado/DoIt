@@ -102,7 +102,7 @@ h2 {
   width: @lists-width;
 
   li {
-    .items
+    .items;
   }
 }
 
@@ -110,23 +110,31 @@ h2 {
   float: right;
   width: @tasks-width;
 
+  /* Status information (common to all tasks) */
   & > p {
     margin-top: 10px;
     float: right;
   }
+}
 
-  & > ul > li {
-    .items
-  }
+.task {
+  .items;
 
-  ul {
-    p, ul, ul li {
-      display: inline;
-    }
-  }
-
-  ul ul li {
-    background: #88f;
+  /* Task details displayed only when selected */
+  & > div {
+    margin-top: 15px;
   }
 }
 
+.tags {
+  margin-top: 5px;
+
+  ul, p {
+    display: inline;
+  }
+}
+
+.tag {
+  background: #88f;
+  display: inline;
+}
