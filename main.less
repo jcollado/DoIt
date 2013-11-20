@@ -50,7 +50,11 @@ table {
 /* CSS reset ends here */
 @content-width: 900px;
 @lists-width: 175px;
-@tasks-width: @content-width - @lists-width;
+@tasks-width: @content-width - @lists-width - 10px;
+
+@add-button-space: 70px;
+@add-list-width: @lists-width - @add-button-space;
+@add-task-width: @tasks-width - @add-button-space;
 
 body {
   margin: 20px;
@@ -80,11 +84,15 @@ h2 {
   margin-bottom: 20px;
 }
 
-.items() {
+.box() {
   background: #ddd;
   margin: 5px;
   padding: 5px 10px;
   border-radius: 5px;
+}
+
+.rtm-items() {
+  .box;
 
   &:hover {
     color: #eee;
@@ -101,12 +109,29 @@ h2 {
   }
 }
 
+.add-form(@input-width) {
+  .box;
+
+  input {
+    width: @input-width;
+  }
+
+  button {
+    float: right;
+  }
+}
+
 #lists {
   float: left;
   width: @lists-width;
 
+  /* Lists addition form */
+  form {
+    .add-form(@add-list-width);
+  }
+
   li {
-    .items;
+    .rtm-items;
   }
 }
 
@@ -119,10 +144,16 @@ h2 {
     margin-top: 10px;
     float: right;
   }
+
+  /* Tasks addition form */
+  form {
+    .add-form(@add-task-width);
+  }
+
 }
 
 .task {
-  .items;
+  .rtm-items;
 
   /* Task details displayed only when selected */
   & > div {
