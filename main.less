@@ -49,7 +49,7 @@ table {
 
 /* CSS reset ends here */
 @content-width: 900px;
-@lists-width: 150px;
+@lists-width: 175px;
 @tasks-width: @content-width - @lists-width;
 
 body {
@@ -95,6 +95,10 @@ h2 {
     color: #eee;
     background: #333;
   }
+
+  & > p > span:last-child {
+    float: right;
+  }
 }
 
 #lists {
@@ -119,10 +123,6 @@ h2 {
 
 .task {
   .items;
-
-  & > p > span:last-child {
-    float: right;
-  }
 
   /* Task details displayed only when selected */
   & > div {

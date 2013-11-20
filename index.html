@@ -30,7 +30,14 @@
     <div id="lists" data-bind="visible: isAuthorized()">
       <p data-bind="visible: state() == 'loading-lists'">Loading lists <i class="fa fa-spinner fa-spin"></i></p>
       <ul data-bind="foreach: lists()">
-        <li data-bind="visible: !(archived || deleted), text: name, css: {selected: selected()}, click: $parent.selectList($data)">
+        <li data-bind="visible: !(archived || deleted), css: {selected: selected()}, click: $parent.selectList($data), event: {mouseenter: toggleDisplayListActions, mouseleave: toggleDisplayListActions}">
+          <p>
+            <span data-bind="text: name"></span>
+            <span data-bind="visible: displayListActions">
+              <i class="fa fa-pencil-square-o"></i>
+              <i class="fa fa-trash-o"></i>
+            </span>
+          <p>
         </li>
       </ul>
     </div>
