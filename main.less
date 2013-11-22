@@ -104,8 +104,10 @@ h2 {
     background: #333;
   }
 
-  & > p > span:last-child {
-    float: right;
+  & > p {
+    & > span:last-child, & > i {
+      float: right;
+    }
   }
 }
 
@@ -116,8 +118,16 @@ h2 {
     width: @input-width;
   }
 
-  button {
+  button, i {
     float: right;
+  }
+
+  button {
+    margin-top: 3px;
+  }
+
+  & > i {
+    margin-top: 5px;
   }
 }
 

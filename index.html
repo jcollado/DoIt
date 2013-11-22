@@ -30,21 +30,20 @@
     <div id="lists" data-bind="visible: isAuthorized()">
       <p data-bind="visible: state() == 'loading-lists'">Loading lists <i class="fa fa-spinner fa-spin"></i></p>
       <form data-bind="visible: state() != 'loading-lists'">
-        <input type="text" placeholder="New list name" data-bind="value: newListName">
-        <button type="submit" data-bind="click: addList">
+        <input type="text" placeholder="New list name" data-bind="value: newListName, disable: addingList">
+        <button type="submit" data-bind="visible: !addingList(), click: addList">
           <i class="fa fa-plus"></i>
         </button>
+        <i class="fa fa-spinner fa-spin" data-bind="visible: addingList"></i>
       </form>
       <ul data-bind="foreach: sortedLists()">
         <li data-bind="visible: !(archived || deleted), css: {selected: selected()}, click: $parent.selectList($data), event: {mouseenter: toggleDisplayListActions, mouseleave: toggleDisplayListActions}">
           <p>
             <span data-bind="text: name"></span>
-            <span data-bind="visible: displayListActions">
-              <span data-bind="visible: !waitingResponse()">
-                <i class="fa fa-pencil-square-o" data-bind="click: edit, clickBubble: false"></i>
-                <i class="fa fa-trash-o" data-bind="click: remove, clickBubble: false"></i>
-              </span>
-              <i class="fa fa-spinner fa-spin" data-bind="visible: waitingResponse"></i>
+            <i class="fa fa-spinner fa-spin" data-bind="visible: waitingResponse"></i>
+            <span data-bind="visible: displayListActions() && !waitingResponse()">
+              <i class="fa fa-pencil-square-o" data-bind="click: edit, clickBubble: false"></i>
+              <i class="fa fa-trash-o" data-bind="click: remove, clickBubble: false"></i>
             </span>
           <p>
         </li>
@@ -60,22 +59,21 @@
       </p>
       <h2 data-bind="text: selectedList() && selectedList().name"></h2>
       <form data-bind="visible: state() == 'ready' && selectedList()">
-        <input type="text" placeholder="New task name" data-bind="value: newTaskName">
-        <button type="submit" data-bind='click: addTask'>
+        <input type="text" placeholder="New task name" data-bind="value: newTaskName, disable: addingTask">
+        <button type="submit" data-bind='visible: !addingTask(), click: addTask'>
           <i class="fa fa-plus"></i>
         </button>
+        <i class="fa fa-spinner fa-spin" data-bind="visible: addingTask"></i>
       </form>
       <ul data-bind="foreach: taskSeries()">
         <li class="task" data-bind="click: $parent.toggleTask($data), css: {selected: selected()}, event: {mouseenter: toggleDisplayTaskActions, mouseleave: toggleDisplayTaskActions}">
           <p>
             <span data-bind="text: name"></span>
-            <span data-bind="visible: displayTaskActions">
-              <span data-bind="visible: !waitingResponse()">
-                <i class="fa fa-check" data-bind="click: complete, clickBubble: false"></i>
-                <i class="fa fa-pencil-square-o" data-bind="click: edit, clickBubble: false"></i>
-                <i class="fa fa-trash-o" data-bind="click: remove, clickBubble: false"></i>
-              </span>
-              <i class="fa fa-spinner fa-spin" data-bind="visible: waitingResponse"></i>
+            <i class="fa fa-spinner fa-spin" data-bind="visible: waitingResponse"></i>
+            <span data-bind="visible: displayTaskActions() && !waitingResponse()">
+              <i class="fa fa-check" data-bind="click: complete, clickBubble: false"></i>
+              <i class="fa fa-pencil-square-o" data-bind="click: edit, clickBubble: false"></i>
+              <i class="fa fa-trash-o" data-bind="click: remove, clickBubble: false"></i>
             </span>
           </p>
           <!-- Display task details if is selected -->
