@@ -35,7 +35,7 @@
           <i class="fa fa-plus"></i>
         </button>
       </form>
-      <ul data-bind="foreach: lists()">
+      <ul data-bind="foreach: sortedLists()">
         <li data-bind="visible: !(archived || deleted), css: {selected: selected()}, click: $parent.selectList($data), event: {mouseenter: toggleDisplayListActions, mouseleave: toggleDisplayListActions}">
           <p>
             <span data-bind="text: name"></span>
