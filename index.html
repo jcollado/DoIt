@@ -67,6 +67,7 @@
           <p>
             <span data-bind="text: name"></span>
             <span data-bind="visible: displayTaskActions">
+              <i class="fa fa-check" data-bind="click: complete, clickBubble: false"></i>
               <i class="fa fa-pencil-square-o" data-bind="click: edit, clickBubble: false"></i>
               <i class="fa fa-trash-o" data-bind="click: remove, clickBubble: false"></i>
             </span>
