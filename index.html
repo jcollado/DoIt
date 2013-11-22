@@ -40,8 +40,8 @@
           <p>
             <span data-bind="text: name"></span>
             <span data-bind="visible: displayListActions">
-              <i class="fa fa-pencil-square-o"></i>
-              <i class="fa fa-trash-o"></i>
+              <i class="fa fa-pencil-square-o" data-bind="click: edit, clickBubble: false"></i>
+              <i class="fa fa-trash-o" data-bind="click: remove, clickBubble: false"></i>
             </span>
           <p>
         </li>
@@ -67,8 +67,8 @@
           <p>
             <span data-bind="text: name"></span>
             <span data-bind="visible: displayTaskActions">
-              <i class="fa fa-pencil-square-o"></i>
-              <i class="fa fa-trash-o"></i>
+              <i class="fa fa-pencil-square-o" data-bind="click: edit, clickBubble: false"></i>
+              <i class="fa fa-trash-o" data-bind="click: remove, clickBubble: false"></i>
             </span>
           </p>
           <!-- Display task details if is selected -->
