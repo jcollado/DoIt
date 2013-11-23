@@ -37,7 +37,7 @@
         <i class="fa fa-spinner fa-spin" data-bind="visible: addingList"></i>
       </form>
       <ul data-bind="foreach: sortedLists">
-        <li data-bind="visible: !(archived || deleted), css: {selected: selected}, click: $parent.selectList($data), event: {mouseenter: enableHover, mouseleave: disableHover}">
+        <li data-bind="visible: !(archived || deleted), css: {selected: selected}, click: $parent.selectList($data), hover: hover">
           <p>
             <span data-bind="text: name"></span>
             <i class="fa fa-spinner fa-spin" data-bind="visible: waitingForResponse"></i>
@@ -66,7 +66,7 @@
         <i class="fa fa-spinner fa-spin" data-bind="visible: addingTask"></i>
       </form>
       <ul data-bind="foreach: taskSeries()">
-        <li class="task" data-bind="click: $parent.toggleTask($data), css: {selected: selected}, event: {mouseenter: enableHover, mouseleave: disableHover}">
+        <li class="task" data-bind="slide: display, click: $parent.toggleTask($data), css: {selected: selected}, hover: hover">
           <p>
             <span data-bind="text: name"></span>
             <i class="fa fa-spinner fa-spin" data-bind="visible: waitingForResponse"></i>
