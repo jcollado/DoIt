@@ -27,7 +27,7 @@
     </div>
 
     <!-- Display lists of tasks -->
-    <div id="lists" data-bind="visible: isAuthorized()">
+    <div id="lists" data-bind="visible: isAuthorized">
       <p data-bind="visible: state() == 'loading-lists'">Loading lists <i class="fa fa-spinner fa-spin"></i></p>
       <form data-bind="visible: state() != 'loading-lists'">
         <input type="text" placeholder="New list name" data-bind="value: newListName, disable: addingList">
@@ -36,8 +36,8 @@
         </button>
         <i class="fa fa-spinner fa-spin" data-bind="visible: addingList"></i>
       </form>
-      <ul data-bind="foreach: sortedLists()">
-        <li data-bind="visible: !(archived || deleted), css: {selected: selected()}, click: $parent.selectList($data), event: {mouseenter: enableHover, mouseleave: disableHover}">
+      <ul data-bind="foreach: sortedLists">
+        <li data-bind="visible: !(archived || deleted), css: {selected: selected}, click: $parent.selectList($data), event: {mouseenter: enableHover, mouseleave: disableHover}">
           <p>
             <span data-bind="text: name"></span>
             <i class="fa fa-spinner fa-spin" data-bind="visible: waitingForResponse"></i>
@@ -51,7 +51,7 @@
     </div>
 
     <!-- Display tasks for the selected list -->
-    <div id="tasks" data-bind="visible: isAuthorized()">
+    <div id="tasks" data-bind="visible: isAuthorized">
       <p data-bind="visible: state() == 'loading-tasks'">Loading tasks <i class="fa fa-spinner fa-spin"></i></p>
       <p data-bind="visible: state() == 'ready' && selectedList()">
         <span data-bind="text: taskSeries().length">?</span>
@@ -66,7 +66,7 @@
         <i class="fa fa-spinner fa-spin" data-bind="visible: addingTask"></i>
       </form>
       <ul data-bind="foreach: taskSeries()">
-        <li class="task" data-bind="click: $parent.toggleTask($data), css: {selected: selected()}, event: {mouseenter: enableHover, mouseleave: disableHover}">
+        <li class="task" data-bind="click: $parent.toggleTask($data), css: {selected: selected}, event: {mouseenter: enableHover, mouseleave: disableHover}">
           <p>
             <span data-bind="text: name"></span>
             <i class="fa fa-spinner fa-spin" data-bind="visible: waitingForResponse"></i>
@@ -77,7 +77,7 @@
             </span>
           </p>
           <!-- Display task details if is selected -->
-          <div data-bind="slide: selected()">
+          <div data-bind="slide: selected">
             <p>Priority: <span data-bind="text: task.priority">No priority</span></p>
             <div class="tags">
               <p>Tags: <span data-bind="visible: !tags.length">No tags</span></p>
