@@ -39,10 +39,11 @@
       <ul data-bind="foreach: sortedLists">
         <li data-bind="slide: display, afterSlideUp: afterRemove, css: {selected: selected}, click: $parent.selectList($data), hover: hover">
           <p>
-            <span data-bind="text: name"></span>
+            <span data-bind="visible: !editing(), text: name"></span>
+            <input type="text" data-bind="visible: editing, value: name, hasFocus: editing">
             <i class="fa fa-spinner fa-spin" data-bind="visible: waitingForResponse"></i>
             <span data-bind="visible: displayActions">
-              <i class="fa fa-pencil-square-o" data-bind="click: edit, clickBubble: false"></i>
+              <i class="fa fa-pencil-square-o" data-bind="visible: !locked, click: edit, clickBubble: false"></i>
               <i class="fa fa-trash-o" data-bind="click: remove, clickBubble: false"></i>
             </span>
           <p>
@@ -68,11 +69,12 @@
       <ul data-bind="foreach: taskSeries()">
         <li class="task" data-bind="slide: display, afterSlideUp: afterRemove, click: $parent.toggleTask($data), css: {selected: selected}, hover: hover">
           <p>
-            <span data-bind="text: name"></span>
+            <span data-bind="visible: !editing(), text: name, click: edit, clickBubble: false"></span>
+            <input type="text" data-bind="visible: editing, value: name, hasFocus: editing">
             <i class="fa fa-spinner fa-spin" data-bind="visible: waitingForResponse"></i>
             <span data-bind="visible: displayActions">
-              <i class="fa fa-check" data-bind="click: complete, clickBubble: false"></i>
               <i class="fa fa-pencil-square-o" data-bind="click: edit, clickBubble: false"></i>
+              <i class="fa fa-check" data-bind="click: complete, clickBubble: false"></i>
               <i class="fa fa-trash-o" data-bind="click: remove, clickBubble: false"></i>
             </span>
           </p>

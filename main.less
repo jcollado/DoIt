@@ -56,6 +56,9 @@ table {
 @add-list-width: @lists-width - @add-button-space;
 @add-task-width: @tasks-width - @add-button-space;
 
+@edit-list-name-width: @add-list-width - 10px;
+@edit-task-name-width: @add-task-width - 30px;
+
 body {
   margin: 20px;
   color: #111;
@@ -105,6 +108,7 @@ h2 {
   }
 
   & > p {
+    line-height: 30px;
     & > span:last-child, & > i {
       float: right;
     }
@@ -147,6 +151,11 @@ h2 {
 
   li {
     .rtm-items;
+
+    /* Task name edit textbox */
+    & > p > input[type=text] {
+      width: @edit-list-name-width;
+    }
   }
 }
 
@@ -169,6 +178,11 @@ h2 {
 
 .task {
   .rtm-items;
+
+  /* Task name edit textbox */
+  & > p > input[type=text] {
+    width: @edit-task-name-width;
+  }
 
   /* Task details displayed only when selected */
   & > div {
