@@ -59,9 +59,14 @@ table {
 @edit-list-name-width: @add-list-width - 10px;
 @edit-task-name-width: @add-task-width - 30px;
 
+@default-color: #111;
+@highlight-color: #eee;
+@drop-active-color: #109442;
+@drop-hover-color: lighten(@drop-active-color, 10%);
+
 body {
   margin: 20px;
-  color: #111;
+  color: @default-color;
   background: #55a;
   font-size: 16px;
 }
@@ -91,7 +96,7 @@ h1, h2 {
   text-shadow: #888 1px 1px 2px;
 }
 
-.box() {
+.box {
   background: #ddd;
   margin: 5px;
   padding: 5px 10px;
@@ -102,12 +107,12 @@ h1, h2 {
   .box;
 
   &:hover {
-    color: #eee;
+    color: @highlight-color;
     background: #555;
   }
 
   &.selected {
-    color: #eee;
+    color: @highlight-color;
     background: #333;
   }
 
@@ -156,6 +161,16 @@ h1, h2 {
 
 .list {
   .rtm-items;
+
+  &.drop-area-active {
+    color: @highlight-color;
+    background: @drop-active-color;
+  }
+
+  &.drop-area-hover {
+    color: @highlight-color;
+    background: @drop-hover-color;
+  }
 
   /* Name edit textbox */
   & > p > input[type=text] {
