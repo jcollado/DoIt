@@ -85,6 +85,7 @@
           </p>
           <!-- Display task details if is selected -->
           <div data-bind="slide: selected">
+            <p>Due date/time: <span data-bind="text: due">No due date/time</span></p>
             <p>Priority: <span data-bind="text: task.priority">No priority</span></p>
             <div class="tags">
               <p>Tags: <span data-bind="visible: !tags.length">No tags</span></p>
