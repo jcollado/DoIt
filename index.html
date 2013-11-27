@@ -38,7 +38,7 @@
       </form>
       <!-- Lists are always sorted by name -->
       <ul data-bind="foreach: sortedLists">
-        <li class="list" data-bind="slide: display, afterSlideUp: afterRemove, css: {selected: selected}, click: $parent.selectList($data), hover: hover">
+        <li class="list" data-bind="slide: display, afterSlideUp: afterRemove, css: {selected: selected}, click: $parent.selectList($data), hover: hover, droppable">
           <p>
             <span data-bind="visible: !editing(), text: name"></span>
             <input type="text" data-bind="visible: editing, value: name, hasFocus: editing">
@@ -79,7 +79,7 @@
         <i class="fa fa-spinner fa-spin" data-bind="visible: addingTask"></i>
       </form>
       <ul data-bind="foreach: sortedTaskSeries()">
-        <li class="task" data-bind="slide: display, afterSlideUp: afterRemove, click: $parent.toggleTask($data), css: {selected: selected}, hover: hover">
+        <li class="task" data-bind="slide: display, afterSlideUp: afterRemove, click: $parent.toggleTask($data), css: {selected: selected}, hover: hover, draggable">
           <p>
             <span data-bind="visible: !editing(), text: name, click: edit, clickBubble: false"></span>
             <input type="text" data-bind="visible: editing, value: name, hasFocus: editing">
@@ -109,6 +109,7 @@
   </div>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   <script type="text/javascript" src="lib/underscore-1.5.2.min.js"></script>
   <script type="text/javascript" src="lib/knockout-3.0.0.js"></script>
   <script type="text/javascript" src="lib/sammy-0.7.4.min.js"></script>
