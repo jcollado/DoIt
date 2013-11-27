@@ -206,9 +206,16 @@ h1, h2 {
 .task {
   .rtm-items;
 
-  /* Task name edit textbox */
-  & > p > input[type=text] {
-    width: @edit-task-name-width;
+  & > p {
+    // Task name
+    & > span:first-child {
+      cursor: pointer;
+    }
+
+    /* Task name edit textbox */
+    & > input[type=text] {
+      width: @edit-task-name-width;
+    }
   }
 
   /* Task details displayed only when selected */
