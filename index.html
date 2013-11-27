@@ -36,8 +36,9 @@
         </button>
         <i class="fa fa-spinner fa-spin" data-bind="visible: addingList"></i>
       </form>
+      <!-- Lists are always sorted by name -->
       <ul data-bind="foreach: sortedLists">
-        <li data-bind="slide: display, afterSlideUp: afterRemove, css: {selected: selected}, click: $parent.selectList($data), hover: hover">
+        <li class="list" data-bind="slide: display, afterSlideUp: afterRemove, css: {selected: selected}, click: $parent.selectList($data), hover: hover">
           <p>
             <span data-bind="visible: !editing(), text: name"></span>
             <input type="text" data-bind="visible: editing, value: name, hasFocus: editing">
