@@ -63,6 +63,7 @@ body {
   margin: 20px;
   color: #111;
   background: #55a;
+  font-size: 16px;
 }
 
 #content {
@@ -78,13 +79,12 @@ h1 {
   font-size: 30px;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 26px;
 }
 
 h2 {
   font-size: 25px;
   font-weight: bold;
-  margin-bottom: 20px;
 }
 
 h1, h2 {
@@ -157,7 +157,7 @@ h1, h2 {
 .list {
   .rtm-items;
 
-  /* Task name edit textbox */
+  /* Name edit textbox */
   & > p > input[type=text] {
     width: @edit-list-name-width;
   }
@@ -168,16 +168,24 @@ h1, h2 {
   width: @tasks-width;
 
   /* Status information (common to all tasks) */
-  & > p {
-    margin-top: 10px;
-    float: right;
+  & > div {
+    margin-bottom: 20px;
+    text-align: center;
+
+    h2 {
+      float: left;
+    }
+
+    p {
+      margin-top: 5px;
+      float: right;
+    }
   }
 
   /* Tasks addition form */
   form {
     .add-form(@add-task-width);
   }
-
 }
 
 .task {

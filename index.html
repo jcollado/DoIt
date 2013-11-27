@@ -56,12 +56,21 @@
 
     <!-- Display tasks for the selected list -->
     <div id="tasks" data-bind="visible: isAuthorized">
-      <p data-bind="visible: state() == 'loading-tasks'">Loading tasks <i class="fa fa-spinner fa-spin"></i></p>
-      <p data-bind="visible: state() == 'ready' && selectedList()">
-        <span data-bind="text: taskSeries().length">?</span>
-        incomplete task<span data-bind="visible: taskSeries().length != 1">s</span>
-      </p>
-      <h2 data-bind="text: selectedList() && selectedList().name"></h2>
+      <div>
+        <p data-bind="visible: state() == 'loading-tasks'">Loading tasks <i class="fa fa-spinner fa-spin"></i></p>
+        <p data-bind="visible: state() == 'ready' && selectedList()">
+          <span data-bind="text: taskSeries().length">?</span>
+          incomplete task<span data-bind="visible: taskSeries().length != 1">s</span>
+        </p>
+        <h2 data-bind="text: selectedList() && selectedList().name"></h2>
+        <label data-bind="visible: selectedList()">Sort by:
+          <select data-bind="value: taskSortBy">
+            <option value="name">Name</option>
+            <option value="priority">Priority</option>
+            <option value="due">Due date/time</option>
+          </select>
+        </label>
+      </div>
       <form data-bind="visible: state() == 'ready' && selectedList()">
         <input type="text" placeholder="New task name" data-bind="value: newTaskName, disable: addingTask">
         <button type="submit" data-bind='visible: !addingTask(), click: addTask'>
@@ -69,7 +78,7 @@
         </button>
         <i class="fa fa-spinner fa-spin" data-bind="visible: addingTask"></i>
       </form>
-      <ul data-bind="foreach: taskSeries()">
+      <ul data-bind="foreach: sortedTaskSeries()">
         <li class="task" data-bind="slide: display, afterSlideUp: afterRemove, click: $parent.toggleTask($data), css: {selected: selected}, hover: hover">
           <p>
             <span data-bind="visible: !editing(), text: name, click: edit, clickBubble: false"></span>
@@ -85,7 +94,7 @@
           </p>
           <!-- Display task details if is selected -->
           <div data-bind="slide: selected">
-            <p>Due date/time: <span data-bind="text: due">No due date/time</span></p>
+            <p>Due date/time: <span data-bind="text: task.due">No due date/time</span></p>
             <p>Priority: <span data-bind="text: task.priority">No priority</span></p>
             <div class="tags">
               <p>Tags: <span data-bind="visible: !tags.length">No tags</span></p>
