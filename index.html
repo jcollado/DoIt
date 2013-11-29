@@ -30,8 +30,8 @@
     <div id="lists" data-bind="visible: isAuthorized">
       <p data-bind="visible: state() == 'loading-lists'">Loading lists <i class="fa fa-spinner fa-spin"></i></p>
       <form data-bind="visible: state() != 'loading-lists'">
-        <input type="text" placeholder="New list name" data-bind="value: newListName, disable: addingList">
-        <button type="submit" data-bind="visible: !addingList(), click: addList">
+        <input type="text" placeholder="New list name" data-bind="value: newListName, valueUpdate: 'afterkeydown', disable: addingList">
+        <button type="submit" data-bind="visible: !addingList(), click: addList, disable: invalidListName">
           <i class="fa fa-plus"></i>
         </button>
         <i class="fa fa-spinner fa-spin" data-bind="visible: addingList"></i>
@@ -72,8 +72,8 @@
         </label>
       </div>
       <form data-bind="visible: state() == 'ready' && selectedList()">
-        <input type="text" placeholder="New task name" data-bind="value: newTaskName, disable: addingTask">
-        <button type="submit" data-bind='visible: !addingTask(), click: addTask'>
+        <input type="text" placeholder="New task name" data-bind="value: newTaskName, valueUpdate: 'afterkeydown', disable: addingTask">
+        <button type="submit" data-bind='visible: !addingTask(), click: addTask, disable: invalidTaskName'>
           <i class="fa fa-plus"></i>
         </button>
         <i class="fa fa-spinner fa-spin" data-bind="visible: addingTask"></i>
